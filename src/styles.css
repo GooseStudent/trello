@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #107abb;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.board {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.column {
+    width: 300px;
+    background: #dee2e5;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.column h2 {
+    font-size: 16px;
+    padding: 8px 10px;
+    color: #172b4d;
+    margin-bottom: 10px;
+}
+
+.card-list {
+    min-height: 50px;
+    width: 100%;
+    flex: 1;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    cursor: grab;
+    position: relative;
+    transition: box-shadow 0.2s;
+    word-wrap: break-word;
+    user-select: none;
+}
+
+.card:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.card:hover .delete-btn {
+    display: block;
+}
+
+.card.dragging {
+    opacity: 0;
+    cursor: grabbing;
+}
+
+.card.dragged {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.8;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    width: 280px;
+    cursor: grabbing;
+}
+
+.delete-btn {
+    display: none;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: none;
+    border: none;
+    color: #6b778c;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.delete-btn:hover {
+    background: #ebecf0;
+    color: #172b4d;
+}
+
+.drop-zone {
+    height: 50px;
+    background: rgba(9, 30, 66, 0.08);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 2px dashed #0052cc;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #5e6c84;
+    text-align: left;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.add-btn:hover {
+    background: #dfe1e6;
+    color: #172b4d;
+}
+
+.add-form {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.add-form.active {
+    display: flex;
+}
+
+.add-form textarea {
+    resize: vertical;
+    padding: 8px;
+    border: 2px solid #dfe1e6;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    min-height: 60px;
+}
+
+.add-form textarea:focus {
+    outline: none;
+    border-color: #0052cc;
+}
+
+.add-form-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.add-form-actions button {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-form-actions .submit-btn {
+    background: #0052cc;
+    color: white;
+}
+
+.add-form-actions .submit-btn:hover {
+    background: #0047b3;
+}
+
+.add-form-actions .cancel-btn {
+    background: none;
+    color: #6b778c;
+    font-size: 20px;
+    padding: 0 8px;
+}
+
+.add-form-actions .cancel-btn:hover {
+    color: #172b4d;
+}
