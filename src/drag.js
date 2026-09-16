@@ -121,7 +121,15 @@ function onDragEnd(e) {
     
     if (dropZone) {
         const targetColumn = parseInt(dropZone.closest('.column').dataset.column);
-        const targetIndex = dropZone.parentNode.querySelectorAll('.card:not(.dragging)').length;
+        
+        let targetIndex = 0;
+        let sibling = dropZone.previousElementSibling;
+        while (sibling) {
+            if (sibling.classList.contains('card') && !sibling.classList.contains('dragging')) {
+                targetIndex++;
+            }
+            sibling = sibling.previousElementSibling;
+        }
         
         const success = moveCardInState(
             dragData.columnIndex,
